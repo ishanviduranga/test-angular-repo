@@ -1,0 +1,25 @@
+table {
+    border: 1px solid brown;
+}
+
+tr:nth-child(odd) {
+    background: rgb(194, 194, 194);
+}
+
+tr:nth-child(1) {
+    color: rgb(165, 165, 165);
+    background: rgb(17, 17, 17);
+}
+
+tr > td {
+    padding: 10px;
+    margin: 10px;
+}
+
+button, input {
+    padding: 10px;
+}
+
+.custom-delete {
+    cursor: pointer;
+}

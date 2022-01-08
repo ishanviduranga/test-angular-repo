@@ -1,0 +1,29 @@
+
+<h1>Welcome to the simple todo app...</h1>
+<h3>Follow the instruction!</h3>
+
+<label for="input-field"></label>
+<input #task id="input-field" type="text" placeholder="Enter your task here." (keyup.enter)="addTask(task.value)">
+<button (click)="addTask(task.value)">Add +</button>
+
+<br>
+<h3>Task list</h3>
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Task</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    <ng-container *ngIf="taskListArray.length > 0">
+        <tr *ngFor="let item of taskListArray">
+            <td>#</td>
+            <td>{{ item.taskname }}</td>
+            <td>{{ item.status }}</td>
+            <td class="custom-delete" (click)="removeTask(item.taskname)">X</td>
+        </tr>
+    </ng-container>
+</table>
+
+
+
