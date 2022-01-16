@@ -1,13 +1,15 @@
-FROM node:14.16.0-alpine3.13
-
-RUN addgroup app && adduser -S -G app app
-USER app
+# Stage 1
+FROM node:12.16.2-alpine as build-app
 
 WORKDIR /app
-COPY package*.josn ./
+
+COPY package.json /app/package.json
 RUN npm install
 COPY . .
+RUN npm run build
 
-EXPOSE 30000
+# Stage 2
+FROM nginx:1.21.5-alpine
+COPY --from=build-app /app/dist/test-angular-project /usr/share/nginx/html
 
-CMD ["npm", "start"]
+EXPOSE 80
